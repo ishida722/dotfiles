@@ -8,7 +8,6 @@ endif
 "
 "エンコードと改行コードの自動判別
 set encoding=utf-8
-" set fileencodings=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 set fileformats=unix
 let $LANG="en"
@@ -35,9 +34,6 @@ set autochdir
 " 表示設定
 "
 "----------------------------------------
-"ターミナルから起動したときのカラースキーム
-colorscheme railscasts
-set t_Co=256
 
 "スプラッシュ(起動時のメッセージ)を表示しない
 "set shortmess+=I
@@ -69,23 +65,16 @@ set display=lastline
 "Tab、行末の半角スペースを明示的に表示する
 set list
 set listchars=tab:^\ ,trail:~
-" ハイライトを有効にする
-if &t_Co > 2 || has('gui_running')
-  syntax on
-endif
+syntax on
 
-set nocompatible
 filetype off
 
 "swapファイルを置く場所
 set directory=~/.vimswap/
-
 "バックアップファイルを置く場所
 set backupdir=~/.vimbackup/
-
 "アンドゥファイルを置く場所
 set undodir=~/.vimundo/
-"
 
 "ノーマルモード時にエンターで改行をいれる
 nmap <CR> o<ESC>
@@ -99,15 +88,11 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
+" Search -------------------------------
+set incsearch
+set hlsearch
 "esc二回でハイライトを消す
 nnoremap <ESC><ESC> :nohlsearch<CR>
-" Search -------------------------------
-set wrapscan				" 最後まで検索したら先頭へ戻る
-set ignorecase				" 大文字小文字無視
-set smartcase				" 大文字ではじめたら大文字小文字無視しない
-set incsearch				" インクリメンタルサーチ
-set hlsearch				" 検索文字をハイライト
-
 
 " 表示行単位で上下移動するように
 nnoremap j gj
@@ -128,8 +113,45 @@ nnoremap <C-h> gT
 
 " exコマンド
 command! OpenVimrc :tabe ~/.vimrc
-
 command! ReadVimrc :source ~/.vimrc
+
+
+"""""""""""""""""""""""""""""""""""""""""""""
+if &compatible
+    set nocompatible
+  endif
+  set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+  call dein#begin(expand('~/.cache/dein'))
+
+  call dein#add('Shougo/dein.vim')
+  call dein#add('fuenor/qfixhowm')
+  call dein#add('kien/ctrlp.vim')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('rhysd/clever-f.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Align')
+  call dein#add('koron/dicwin-vim')
+  call dein#add('aklt/plantuml-syntax')
+  call dein#add('digitaltoad/vim-jade')
+  " call dein#add('kannokanno/previm', '46-support-latest-open-browser')
+  call dein#add('kannokanno/previm')
+  call dein#add('tyru/open-browser.vim')
+  call dein#add('godlygeek/tabular')
+  call dein#add('plasticboy/vim-markdown')
+  call dein#add('tyru/eskk.vim')
+  call dein#add('vim-scripts/DoxygenToolkit.vim')
+  call dein#add('altercation/vim-colors-solarized')
+
+  call dein#end()
+
+  filetype plugin indent on
+
+"ターミナルから起動したときのカラースキーム
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+set t_Co=256
 
 """""""""""
 ""SKK""
@@ -139,61 +161,9 @@ let g:eskk#directory = $VIMFILE_DIR.'/.eskk'
 let g:eskk#dictionary = { 'path': $VIMFILE_DIR.'/.skk-jisyo', 'sorted': 0, 'encoding': 'utf-8', }
 let g:eskk#large_dictionary = { 'path': $VIMFILE_DIR.'/.eskk/SKK-JISYO.L', 'sorted': 1, 'encoding': 'euc-jp', }
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"NeoBundle
-
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=$VIMFILE_DIR/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand($VIMFILE_DIR.'/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'gmarik/vundle'
-NeoBundle 'fuenor/qfixhowm'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'katono/rogue.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Align'
-NeoBundle 'koron/dicwin-vim'
-NeoBundle 'aklt/plantuml-syntax'
-NeoBundle 'digitaltoad/vim-jade'
-" NeoBundle 'kannokanno/previm'
-NeoBundle 'kannokanno/previm', '46-support-latest-open-browser'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'tyru/eskk.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'vim-scripts/DoxygenToolkit.vim'
-
-" NeoBundle 'LaTeX-Suite-aka-Vim-LaTeX'
-
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
 """"""" qfixhown
 " qfixappにruntimepathを通す(パスは環境に合わせてください)
-set runtimepath+=c:/temp/qfixapp
+" set runtimepath+=c:/temp/qfixapp
 
 " キーマップリーダー
 let QFixHowm_Key = 'g'
@@ -208,7 +178,7 @@ let QFixHowm_Title = '#'
 " let QFixHowm_FileType = 'qfix_memo'
 
 " howm_dirはファイルを保存したいディレクトリを設定
-let howm_dir             = $VIMFILE_DIR.'/howm'
+let howm_dir             = '~/Dropbox/howm'
 let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.md'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
@@ -230,27 +200,6 @@ let QFixMRU_Entries      = 30
 let QFixMRU_Filename     = $VIMFILE_DIR.'/.qfixmru'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-"vim-latex
-"" プラグインを使うようにする
-filetype plugin on
-set grepprg=grep\ -nH\ $*
-"" .texファイルのコンパイルプログラムを指定(エラーで停止しないようオプション指定)
-let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
-"" .bibファイルのコンパイルプログラムを指定
-let g:Tex_BibtexFlavor = 'jbibtex'
-"" .dviファイルのビュープログラムを指定
-"let g:Tex_ViewRule_dvi = 'c:/tex/dviout/dviout.exe'
-"" pdfファイル生成のための依存関係を記述。
-"" 以下の設定の場合、ターゲットにpdfを指定して\llでコンパイルすると、
-"" まず.dviファイルが作られ、次にそれをもとに.pdfファイルが作られる
-let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-"" .dviファイルのコンパイルプログラムを指定
-let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
-"" .pdfファイルのビュープログラムを指定
-let g:Tex_ViewRule_pdf = 'C:\Program Files\Adobe\Reader 11.0\Reader\AcroRd32.exe'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:tex_flavor='latex'
 
 """ctrlp""""
 
@@ -291,5 +240,3 @@ au BufRead,BufNewFile *.md set filetype=markdown
 if has("path_extra")
   set tags+=tags;
 endif
-
-

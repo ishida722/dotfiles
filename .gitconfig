@@ -1,0 +1,11 @@
+[user]
+	name = chu
+	email = they.know.who.is.the.strongest@gmail.com
+[push]
+	default = simple
+[alias]
+    br = branch
+    co = checkout
+[core]
+	excludesfile = /Users/ishidatadashi/.gitignore_global
+
