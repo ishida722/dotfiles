@@ -52,6 +52,8 @@ bindkey "^N" history-beginning-search-forward-end
 # すべてのヒストリを表示する
 function history-all { history -E 1 }
 
+export VTE_CJK_WIDTH=1
+
 
 # ------------------------------
 # Look And Feel Settings
