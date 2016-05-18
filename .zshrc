@@ -158,9 +158,10 @@ function cd() {
 
 #PATH
 export PATH=~/Dropbox/dotfiles/bin:$PATH
-export PATH=$PATH:/usr/local/redpen/bin
 export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
+export GOPATH=~/bin/go
+export PATH=$PATH:$HOME/bin:$GOPATH/bin
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
