@@ -14,6 +14,10 @@ let $LANG="en"
 
 set showtabline=2 " 常にタブラインを表示
 
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>r :redraw!<CR>
+
 " バックスペースが効かない問題処理
 set backspace=indent,eol,start
 

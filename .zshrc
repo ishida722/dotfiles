@@ -164,8 +164,9 @@ export GOPATH=~/bin/go
 export PATH=$PATH:$HOME/bin:$GOPATH/bin
 
 #pyenv
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="~/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT:$PATH"
 eval "$(pyenv init -)"
 
 ## Virtualenvwrapper
