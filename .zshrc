@@ -73,6 +73,8 @@ bindkey "^N" history-beginning-search-forward-end
 # すべてのヒストリを表示する
 function history-all { history -E 1 }
 
+export VTE_CJK_WIDTH=1
+
 
 # ------------------------------
 # Look And Feel Settings
@@ -156,8 +158,11 @@ function cd() {
 }
 
 #PATH
+export PATH=~/Dropbox/dotfiles/bin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
+export GOPATH=~/bin/go
+export PATH=$PATH:$HOME/bin:$GOPATH/bin
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"

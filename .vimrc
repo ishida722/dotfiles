@@ -143,15 +143,18 @@ if &compatible
   call dein#add('tyru/eskk.vim')
   call dein#add('vim-scripts/DoxygenToolkit.vim')
   call dein#add('altercation/vim-colors-solarized')
+  call dein#add('w0ng/vim-hybrid')
 
   call dein#end()
+
 
   filetype plugin indent on
 
 "ターミナルから起動したときのカラースキーム
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 set background=dark
-colorscheme solarized
+" colorscheme solarized
+colorscheme hybrid
 set t_Co=256
 
 """""""""""
@@ -233,7 +236,6 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 " YAML front matter を有効
 let g:vim_markdown_frontmatter = 1
-" リスト表記自動インデントを無効
 let g:vim_markdown_new_list_item_indent = 0
 
 au BufRead,BufNewFile *.md set filetype=markdown
