@@ -157,6 +157,7 @@ function cd() {
 }
 
 #PATH
+export PATH=/bin:/usr/bin:/usr/local/bin
 export PATH=~/Dropbox/dotfiles/bin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
@@ -164,9 +165,8 @@ export GOPATH=~/bin/go
 export PATH=$PATH:$HOME/bin:$GOPATH/bin
 
 #pyenv
-export PYENV_ROOT="~/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PYENV_ROOT:$PATH"
 eval "$(pyenv init -)"
 
 ## Virtualenvwrapper
