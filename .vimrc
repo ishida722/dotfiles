@@ -118,6 +118,7 @@ nnoremap <C-h> gT
 " exコマンド
 command! OpenVimrc :tabe ~/.vimrc
 command! ReadVimrc :source ~/.vimrc
+" command! Deleate_M :%s///g
 
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -239,7 +240,6 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 " YAML front matter を有効
 let g:vim_markdown_frontmatter = 1
-" リストの自動インデントを無効
 let g:vim_markdown_new_list_item_indent = 0
 
 au BufRead,BufNewFile *.md set filetype=markdown

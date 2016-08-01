@@ -1,4 +1,25 @@
 # (d) is default on
+#
+### Aliases ###
+
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -l -a'
+alias v=vim
+alias t=todo.sh
+alias g=git
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcav='git commit -av'
+alias ga='git add'
+alias pull='git pull'
+alias push='git push'
+alias st='git status'
+alias stt='git status -uno'
+alias phe='git push heroku master'
+alias m=make
+alias mkdpdf="markdown-pdf -s ~/github.css"
+alias pebble_run="pebble install --emulator basalt"
 
 # ------------------------------
 # General Settings
@@ -130,26 +151,6 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 ### RVM ###
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
-### Aliases ###
-
-alias 'll=ls -l'
-alias 'la=ls -a'
-alias 'lla=ls -l -a'
-alias v=vim
-alias t=todo.sh
-alias g=git
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gcav='git commit -av'
-alias ga='git add'
-alias pull='git pull'
-alias push='git push'
-alias st='git status'
-alias stt='git status -uno'
-alias phe='git push heroku master'
-alias m=make
-alias mkdpdf="markdown-pdf -s ~/github.css"
-alias pebble_run="pebble install --emulator basalt"
 
 #cdコマンド実行後、lsを実行する
 function cd() {
