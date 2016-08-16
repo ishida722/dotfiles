@@ -31,6 +31,7 @@ bindkey -v              # キーバインドをviモードに設定
 bindkey -r '^J' # Ctrl-j
 bindkey -r '^A' # Ctrl-a
 
+setopt nonomatch         # no matuch found を抑制
 setopt no_beep           # ビープ音を鳴らさないようにする
 setopt auto_cd           # ディレクトリ名の入力のみで移動する
 #setopt auto_pushd        # cd時にディレクトリスタックにpushdする
@@ -158,6 +159,7 @@ function cd() {
 }
 
 #PATH
+export PATH=/bin:/usr/bin:/usr/local/bin
 export PATH=~/Dropbox/dotfiles/bin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
