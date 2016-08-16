@@ -163,6 +163,7 @@ export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
 export GOPATH=~/bin/go
 export PATH=$PATH:$HOME/bin:$GOPATH/bin
+export JSON_SCHEMA_TEST_SUITE=~/JSON-Schema-Test-Suite
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"

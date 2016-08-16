@@ -21,4 +21,5 @@ $RECYCLE.BIN/
 ### mac ###
 .DS_Store
 
-
+# python
+venv/
