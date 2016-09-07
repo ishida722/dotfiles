@@ -160,7 +160,7 @@ function cd() {
 
 #PATH
 export PATH=/usr/local/bin:/bin:/usr/bin
-export PATH=~/Dropbox/dotfiles/bin:$PATH
+export PATH=~/dotfiles/bin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
 export GOPATH=~/bin/go
