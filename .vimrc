@@ -249,3 +249,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 if has("path_extra")
   set tags+=tags;
 endif
+
+"" g++ compile and execution
+command Cpp !g++ % && ./a.out
