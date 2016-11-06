@@ -5,12 +5,15 @@ ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
+touch ~/.gitconfig.local
+
 #vim dir
 mkdir ~/.vimswap
 mkdir ~/.vimbackup
 mkdir ~/.vimundo
 
 #dein vim
+#:call dein#install()
 mkdir ~/.cache/dein
 mkdir ~/.vim
 mkdir ~/.vim/dein
