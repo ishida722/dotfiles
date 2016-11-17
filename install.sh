@@ -35,14 +35,19 @@ makeDir .vimswap
 makeDir .vimbackup
 makeDir .vimundo
 
-echo "start dein install"
-#dein vim
-#:call dein#install()
-makeDir .cache
-makeDir .cache/dein
-makeDir .vim
-makeDir .vim/dein
+if [ $# -eq 0 ]; then
+    echo "If you want install dein.vim, execution [./install.sh dein]"
+    exit 
+fi 
 
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
-sh ./dein_installer.sh ~/.vim/dein
-rm dein_installer.sh
+if [ $1 = "dein" ]; then
+    echo "start dein install"
+    makeDir .cache
+    makeDir .cache/dein
+    makeDir .vim
+    makeDir .vim/dein
+
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
+    sh ./dein_installer.sh ~/.vim/dein
+    rm dein_installer.sh
+fi
