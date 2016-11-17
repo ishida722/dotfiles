@@ -20,8 +20,8 @@ alias m=make
 alias mkdpdf="markdown-pdf -s ~/github.css"
 alias pebble_run="pebble install --emulator basalt"
 alias activate-venv="source venv/bin/activate"
-alias ... = 'cd ../..'
-alias .... = 'cd ../../..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # ------------------------------
 # General Settings
