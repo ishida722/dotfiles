@@ -139,7 +139,6 @@ if &compatible
   call dein#add('koron/dicwin-vim')
   call dein#add('aklt/plantuml-syntax')
   call dein#add('digitaltoad/vim-jade')
-  " call dein#add('kannokanno/previm', '46-support-latest-open-browser')
   call dein#add('kannokanno/previm')
   call dein#add('tyru/open-browser.vim')
   call dein#add('godlygeek/tabular')
@@ -243,7 +242,6 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 0
 
 au BufRead,BufNewFile *.md set filetype=markdown
-" let g:previm_open_cmd = 'open -a Firefox'
 
 "" tags
 if has("path_extra")
