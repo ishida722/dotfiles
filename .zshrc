@@ -6,7 +6,6 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -l -a'
 alias v=vim
-alias t=todo.sh
 alias g=git
 alias gc='git commit'
 alias gcm='git commit -m'
@@ -20,6 +19,9 @@ alias phe='git push heroku master'
 alias m=make
 alias mkdpdf="markdown-pdf -s ~/github.css"
 alias pebble_run="pebble install --emulator basalt"
+alias activate-venv="source venv/bin/activate"
+alias ... = 'cd ../..'
+alias .... = 'cd ../../..'
 
 # ------------------------------
 # General Settings
@@ -34,7 +36,8 @@ bindkey -r '^A' # Ctrl-a
 setopt nonomatch         # no matuch found を抑制
 setopt no_beep           # ビープ音を鳴らさないようにする
 setopt auto_cd           # ディレクトリ名の入力のみで移動する
-#setopt auto_pushd        # cd時にディレクトリスタックにpushdする
+setopt auto_pushd        # cd時にディレクトリスタックにpushdする
+setopt pushd_ignore_dups # ディレクトリがすでにスタックに含まれているきは追加しない
 setopt correct           # コマンドのスペルを訂正する
 setopt magic_equal_subst # =以降も補完する(--prefix=/usrなど)
 setopt prompt_subst      # プロンプト定義内で変数置換やコマンド置換を扱う
@@ -105,17 +108,11 @@ setopt prompt_subst
 # vcsの表示
 zstyle ':vcs_info:*' formats '%b'
 zstyle ':vcs_info:*' actionformats '%b'
-# プロンプト表示直前にvcs_info呼び出し
-# precmd() { vcs_info }
-# プロンプト表示
-# PROMPT='[${vcs_info_msg_0_}]:%~/%f '
 
 # 一般ユーザ時
 tmp_prompt="%{${fg[cyan]}%}%# %{${reset_color}%}"
 tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
 tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
-# tmp_rprompt="%{${fg[green]}%}(${vcs_info_msg_0_})[%~]%f%{${reset_color}%}"
-# tmp_rprompt="[${vcs_info_msg_0_}]:%~/%f"
 tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
 # rootユーザ時(太字にし、アンダーバーをつける)
@@ -130,21 +127,6 @@ PROMPT=$tmp_prompt    # 通常のプロンプト
 PROMPT2=$tmp_prompt2  # セカンダリのプロンプト(コマンドが2行以上の時に表示される)
 RPROMPT=$tmp_rprompt  # 右側のプロンプト
 SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
-# SSHログイン時のプロンプト
-#[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-#  PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
-#;
-
-### Title (user@hostname) ###
-# case "${TERM}" in
-# kterm*|xterm*|)
-#   precmd() {
-#     # vcs_info
-#     echo -ne "\033]0;${USER}@${HOST%%.*}\007"
-#   }
-#   ;;
-# esac
-
 
 # ------------------------------
 # Other Settings
@@ -152,31 +134,7 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 ### RVM ###
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
-
 #cdコマンド実行後、lsを実行する
 function cd() {
   builtin cd $@ && ls;
 }
-
-#PATH
-export PATH=/usr/local/bin:/bin:/usr/bin
-export PATH=~/dotfiles/bin:$PATH
-export NODE_PATH=/usr/local/lib/node_modules
-export JAVA_HOME='/usr/lib/jvm/java-8-oracle/jre'
-export GOPATH=~/bin/go
-export PATH=$PATH:$HOME/bin:$GOPATH/bin
-export JSON_SCHEMA_TEST_SUITE=~/JSON-Schema-Test-Suite
-
-#pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-## Virtualenvwrapper
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    # source /usr/local/bin/virtualenvwrapper.sh
-fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
