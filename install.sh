@@ -1,22 +1,47 @@
 #!/bin/bash
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+makeLink()
+{
+    if [ ! -e ~/$1 ]; then
+        ln -s ~/dotfiles/$1 ~/$1
+        echo "make $1"
+    else
+        echo "$1 is already exist"
+    fi
+}
+
+makeDir()
+{
+    if [ ! -d ~/$1 ]; then
+        mkdir ~/$1
+        echo "make $1 dir"
+    else
+        echo "$1 is already exist"
+    fi
+}
+
+echo "make dotfile links"
+makeLink .vimrc
+makeLink .zshrc
+makeLink .zshenv
+makeLink .gitconfig
+makeLink .gitignore_global
+makeLink .tmux.conf
 
 touch ~/.gitconfig.local
 
+echo "make vim dir"
 #vim dir
-mkdir ~/.vimswap
-mkdir ~/.vimbackup
-mkdir ~/.vimundo
+makeDir .vimswap
+makeDir .vimbackup
+makeDir .vimundo
 
+echo "start dein install"
 #dein vim
 #:call dein#install()
-mkdir ~/.cache/dein
-mkdir ~/.vim
-mkdir ~/.vim/dein
+makeDir .cache
+makeDir .cache/dein
+makeDir .vim
+makeDir .vim/dein
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
 sh ./dein_installer.sh ~/.vim/dein
