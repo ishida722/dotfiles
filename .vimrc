@@ -143,7 +143,7 @@ if &compatible
   call dein#add('tyru/open-browser.vim')
   call dein#add('godlygeek/tabular')
   call dein#add('plasticboy/vim-markdown')
-  call dein#add('tyru/eskk.vim')
+  "call dein#add('tyru/eskk.vim')
   call dein#add('vim-scripts/DoxygenToolkit.vim')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('w0ng/vim-hybrid')
@@ -164,10 +164,10 @@ set t_Co=256
 """""""""""
 ""SKK""
 """""""""""
-set imdisable
-let g:eskk#directory = $VIMFILE_DIR.'/.eskk'
-let g:eskk#dictionary = { 'path': $VIMFILE_DIR.'/.skk-jisyo', 'sorted': 0, 'encoding': 'utf-8', }
-let g:eskk#large_dictionary = { 'path': $VIMFILE_DIR.'/.eskk/SKK-JISYO.L', 'sorted': 1, 'encoding': 'euc-jp', }
+" set imdisable
+" let g:eskk#directory = $VIMFILE_DIR.'/.eskk'
+" let g:eskk#dictionary = { 'path': $VIMFILE_DIR.'/.skk-jisyo', 'sorted': 0, 'encoding': 'utf-8', }
+" let g:eskk#large_dictionary = { 'path': $VIMFILE_DIR.'/.eskk/SKK-JISYO.L', 'sorted': 1, 'encoding': 'euc-jp', }
 
 """"""" qfixhown
 " qfixappにruntimepathを通す(パスは環境に合わせてください)
