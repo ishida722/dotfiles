@@ -147,6 +147,7 @@ if &compatible
   call dein#add('vim-scripts/DoxygenToolkit.vim')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('w0ng/vim-hybrid')
+  call dein#add('fuenor/im_control.vim')
 
   call dein#end()
 
@@ -250,3 +251,4 @@ endif
 
 "" g++ compile and execution
 command Cpp !g++ % && ./a.out
+

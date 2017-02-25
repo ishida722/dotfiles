@@ -19,7 +19,7 @@ makeDir()
     fi
 }
 
-echo "make dotfile links"
+echo "### make dotfile links ###"
 makeLink .vimrc
 makeLink .zshrc
 makeLink .zshenv
@@ -29,7 +29,7 @@ makeLink .tmux.conf
 
 touch ~/.gitconfig.local
 
-echo "make vim dir"
+echo "### make vim dirs ###"
 #vim dir
 makeDir .vimswap
 makeDir .vimbackup
