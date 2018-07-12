@@ -23,9 +23,7 @@ set backspace=indent,eol,start
 
 set ambiwidth=double
 
-source $VIMRUNTIME/delmenu.vim
 set langmenu=en.utf-8
-source $VIMRUNTIME/menu.vim
 
 if has ('mac')
     nnoremap ; :
