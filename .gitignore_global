@@ -23,3 +23,12 @@ $RECYCLE.BIN/
 
 # python
 venv/
+### https://raw.github.com/github/gitignore/f57304e9762876ae4c9b02867ed0cb887316387e/Global/VisualStudioCode.gitignore
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+

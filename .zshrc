@@ -31,6 +31,7 @@ alias pebble_run="pebble install --emulator basalt"
 alias activate-venv="source venv/bin/activate"
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias text_convert_utf8 'find ./*.txt | xargs -n 10 nkf -wd --overwrite'
 
 # ------------------------------
 # General Settings
