@@ -23,7 +23,6 @@ echo "### make dotfile links ###"
 makeLink .vimrc
 makeLink .gvimrc
 makeLink .zshrc
-makeLink .zshenv
 makeLink .gitconfig
 makeLink .gitignore_global
 makeLink .tmux.conf
