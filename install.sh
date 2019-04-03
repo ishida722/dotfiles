@@ -45,9 +45,8 @@ if [ $1 = "dein" ]; then
     makeDir .cache
     makeDir .cache/dein
     makeDir .vim
-    makeDir .vim/dein
 
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
-    sh ./dein_installer.sh ~/.vim/dein
+    sh ./dein_installer.sh ~/.cache/dein
     rm dein_installer.sh
 fi

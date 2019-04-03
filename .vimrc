@@ -3,8 +3,9 @@ if has ('win32')
 else
     let $VIMFILE_DIR = '~/.vim'
 endif
-" ～ こっから先、~/.vimを参照する場合、代わりに、$VIMFILE_DIR と書くこと!
-"}}}
+" ~/.vimを参照する場合、代わりに、$VIMFILE_DIR と書くこと!
+
+
 "
 "エンコードと改行コードの自動判別
 set encoding=utf-8
@@ -79,9 +80,9 @@ set backupdir=~/.vimbackup/
 set undodir=~/.vimundo/
 
 "ノーマルモード時にエンターで改行をいれる
-nmap <CR> o<ESC>
-noremap <S-Enter> O<ESC>
-noremap <Enter> o<ESC>
+"nmap <CR> o<ESC>
+"noremap <S-Enter> O<ESC>
+"noremap <Enter> o<ESC>
 
 "右スクロールバーなし
 set guioptions-=r
@@ -118,14 +119,25 @@ command! OpenVimrc :tabe ~/.vimrc
 command! ReadVimrc :source ~/.vimrc
 " command! Deleate_M :%s///g
 
-
-"""""""""""""""""""""""""""""""""""""""""""""
+"dein Scripts-----------------------------
 if &compatible
-    set nocompatible
-  endif
-  set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
+  set nocompatible               " Be iMproved
+endif
 
-  call dein#begin(expand('~/.cache/dein'))
+" Required:
+set runtimepath+=/home/ubuntu/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
 
   call dein#add('Shougo/dein.vim')
   call dein#add('fuenor/qfixhowm')
@@ -133,7 +145,7 @@ if &compatible
   call dein#add('tpope/vim-commentary')
   call dein#add('rhysd/clever-f.vim')
   call dein#add('Shougo/unite.vim')
-  call dein#add('Align')
+  call dein#add('vim-scripts/Align')
   call dein#add('koron/dicwin-vim')
   call dein#add('aklt/plantuml-syntax')
   call dein#add('digitaltoad/vim-jade')
@@ -141,16 +153,26 @@ if &compatible
   call dein#add('tyru/open-browser.vim')
   call dein#add('godlygeek/tabular')
   call dein#add('plasticboy/vim-markdown')
-  " call dein#add('tyru/eskk.vim')
   call dein#add('vim-scripts/DoxygenToolkit.vim')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('w0ng/vim-hybrid')
   call dein#add('fuenor/im_control.vim')
 
+  " Required:
   call dein#end()
+  call dein#save_state()
+endif
 
+" Required:
+filetype plugin indent on
+syntax enable
 
-  filetype plugin indent on
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
 
 "ターミナルから起動したときのカラースキーム
 " let g:solarized_termcolors=256
@@ -158,18 +180,6 @@ set background=dark
 " colorscheme solarized
 colorscheme hybrid
 set t_Co=256
-
-"""""""""""
-""SKK""
-"""""""""""
-" set imdisable
-" let g:eskk#directory = $VIMFILE_DIR.'/.eskk'
-" let g:eskk#dictionary = { 'path': $VIMFILE_DIR.'/.skk-jisyo', 'sorted': 0, 'encoding': 'utf-8', }
-" let g:eskk#large_dictionary = { 'path': $VIMFILE_DIR.'/.eskk/SKK-JISYO.L', 'sorted': 1, 'encoding': 'euc-jp', }
-
-""""""" qfixhown
-" qfixappにruntimepathを通す(パスは環境に合わせてください)
-" set runtimepath+=c:/temp/qfixapp
 
 " キーマップリーダー
 let QFixHowm_Key = 'g'
@@ -193,7 +203,6 @@ let QFixMRU_IgnoreFile   = '/pairlink/'
 
 "<F6>  タイムスタンプを挿入してinsertモードへ移行
 nmap <F6> <ESC>i<C-R>=strftime("%Y/%m/%d (%a) %H:%M")<CR><CR>
-
 
 "日記ファイルをhowm_dirのDiaryに作成
 let QFixHowm_DiaryFile = 'diary/%Y/%m/%Y-%m-%d-000000.howm'
@@ -248,5 +257,5 @@ if has("path_extra")
 endif
 
 "" g++ compile and execution
-command Cpp !g++ % && ./a.out
+"command Cpp !g++ % && ./a.out
 
