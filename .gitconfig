@@ -7,3 +7,6 @@
     co = checkout
 [core]
     excludesfile = ~/.gitignore_global
+[user]
+	email = t-ishida@ditect.co.jp
+	name = t-ishida

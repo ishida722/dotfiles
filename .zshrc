@@ -1,11 +1,8 @@
 # (d) is default on
 # PATH setting
 export PGDATA=/usr/local/var/postgres
-export VIMRUNTIME=/usr/local/vim/runtime
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
-
-export PATH="$PYENV_ROOT/bin:$PATH"
+export VIMRUNTIME=/usr/share/vim/vim80
+export PATH="$HOME/bin":"$PATH"
 
 bindkey -r '^j'
 
